@@ -119,3 +119,21 @@ super + alt + shift + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# User defined hotkeys
+
+# Sound Control
+{_, shift} + XF86AudioRaiseVolume
+	pactl set-sink-volume {0,1} +10%
+
+{_, shift} + XF86AudioLowerVolume
+	pactl set-sink-volume {0,1} -10%
+
+{_, shift} + XF86AudioMute
+	pactl set-sink-mute {0,1} toggle
+
+alt + XF86AudioMute
+	pavucontrol
+
+# PrintScreen
+
