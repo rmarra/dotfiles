@@ -1,77 +1,97 @@
-let g:python_host_prog = '/home/rmarra/.envs/python2-vim/bin/python'
-let g:python3_host_prog = '/home/rmarra/.envs/python3-vim/bin/python'
+let g:python_host_prog = '/Users/rmarra/.envs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/rmarra/.envs/neovim3/bin/python'
 
 
 call plug#begin('~/.config/nvim/plugged')
+  " Better file browser
+  Plug 'scrooloose/nerdtree'
 
-" Code commenter
-Plug 'scrooloose/nerdcommenter'
+  " Async autocompletion
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Better file browser
-Plug 'scrooloose/nerdtree'
+  " Completion from other opened files
+  Plug 'Shougo/context_filetype.vim'
 
-" Surround
-Plug 'tpope/vim-surround'
+  " Python autocompletion
+  Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
 
-" Async autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Polyglot
+  Plug 'sheerun/vim-polyglot'
 
-" Completion from other opened files
-Plug 'Shougo/context_filetype.vim'
+  " Generate html in a simple way
+  Plug 'mattn/emmet-vim'
 
-" Python autocompletion
-Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
+  " Git
+  Plug 'tpope/vim-fugitive'
 
-" Linters
-Plug 'neomake/neomake'
+  " Lint
+  Plug 'scrooloose/syntastic'
 
-Plug 'sheerun/vim-polyglot'
+  " Colorschema
+  Plug 'flazz/vim-colorschemes'
 
-" ZenCodding
-Plug 'mattn/emmet-vim'
+  " Surround
+  Plug 'tpope/vim-surround'
 
+  " Repeat that shit
+  Plug 'tpope/vim-repeat'
+
+  " Markdown
+  Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
+  " Ctrl P
+  Plug 'kien/ctrlp.vim'
+
+  " ACK
+  Plug 'mileszs/ack.vim'
+
+  " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
-set textwidth=79
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set autoindent
-set smartindent
 
-filetype on
-filetype plugin on
-filetype indent on
-filetype on
-filetype plugin on
-filetype indent on
+syntax on
 
-let mapleader=","
-
-
-" show line numbers
 set nu
+
+" tabs and spaces handling
+set expandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+
+set ls=2
+
+set incsearch
+set hlsearch 
+
+
+" navigate windows with meta+arrows
+map <C-l> <c-w>l
+map <C-h> <c-w>h
+map <C-k> <c-w>k
+map <C-j> <c-w>j
+
+
+
+" comment this line to enable autocompletion preview window
+" (displays documentation related to the selected completion option)
+set completeopt-=preview
+
+" autocompletion of files and commands behaves like shell
+" (complete only the common part, list the options that match)
+set wildmode=list:longest
 
 " save as sudo
 ca w!! w !sudo tee "%"
 
-" clear search results
-nnoremap <silent> // :noh<CR>
-
-" clear empty spaces at the end of lines on save of python files
-autocmd BufWritePre *.py :%s/\s\+$//e
 
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 " (neomake, ...)
-set shell=/bin/bash 
+set shell=/bin/zsh
 
-" Mappings -----------------------------
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+" ============================================================================
+" Plugins settings and mappings
 
-" NEOMAKER -----------------------------
-call neomake#configure#automake('w')
+
 
 " NERDTree -----------------------------
 
@@ -80,21 +100,35 @@ map <F3> :NERDTreeToggle<CR>
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
-" Check code as python3 by default
-let g:neomake_python_python_maker = neomake#makers#ft#python#python()
-let g:neomake_python_flake8_maker = neomake#makers#ft#python#flake8()
-
 
 " Deoplete -----------------------------
 
 " Use deoplete.
-"
-set completeopt-=preview
 
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
-
 " complete with words from any opened file
 let g:context_filetype#same_filetypes = {}
 let g:context_filetype#same_filetypes._ = '_'
+
+" Jedi-vim ------------------------------
+
+" Disable autocompletion (using deoplete instead)
+let g:jedi#completions_enabled = 0
+
+
+" ColorSchema ---------------------------
+
+set t_Co=256
+colorscheme molokai
+
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = "npx eslint"
+
