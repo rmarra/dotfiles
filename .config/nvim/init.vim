@@ -1,49 +1,49 @@
-let g:python_host_prog = '/Users/rmarra/.envs/neovim2/bin/python'
-let g:python3_host_prog = '/Users/rmarra/.envs/neovim3/bin/python'
+let g:python_host_prog = '/home/rmarra/.envs/neovim2/bin/python'
+let g:python3_host_prog = '/home/rmarra/.envs/neovim3/bin/python'
 
 
 call plug#begin('~/.config/nvim/plugged')
   " Better file browser
-  Plug 'scrooloose/nerdtree'
-
-  " Async autocompletion
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-  " Completion from other opened files
-  Plug 'Shougo/context_filetype.vim'
-
-  " Python autocompletion
-  Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
-
-  " Polyglot
-  Plug 'sheerun/vim-polyglot'
-
-  " Generate html in a simple way
-  Plug 'mattn/emmet-vim'
-
-  " Git
-  Plug 'tpope/vim-fugitive'
-
-  " Lint
-  Plug 'scrooloose/syntastic'
-
-  " Colorschema
-  Plug 'flazz/vim-colorschemes'
-
-  " Surround
-  Plug 'tpope/vim-surround'
-
-  " Repeat that shit
-  Plug 'tpope/vim-repeat'
-
-  " Markdown
-  Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-
-  " Ctrl P
-  Plug 'kien/ctrlp.vim'
-
-  " ACK
-  Plug 'mileszs/ack.vim'
+   Plug 'scrooloose/nerdtree'
+ 
+   " Async autocompletion
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ 
+   " Completion from other opened files
+   Plug 'Shougo/context_filetype.vim'
+ 
+   " Python autocompletion
+   Plug 'zchee/deoplete-jedi', { 'do': ':UpdateRemotePlugins' }
+ 
+   " Polyglot
+   Plug 'sheerun/vim-polyglot'
+ 
+   " Generate html in a simple way
+   Plug 'mattn/emmet-vim'
+ 
+   " Git
+   Plug 'tpope/vim-fugitive'
+ 
+   " Lint
+   Plug 'scrooloose/syntastic'
+ 
+   " Colorschema
+   Plug 'flazz/vim-colorschemes'
+ 
+   " Surround
+   Plug 'tpope/vim-surround'
+ 
+   " Repeat that shit
+   Plug 'tpope/vim-repeat'
+ 
+   " Markdown
+   Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+ 
+   " Ctrl P
+   Plug 'kien/ctrlp.vim'
+ 
+   " ACK
+   Plug 'mileszs/ack.vim'
 
   " Tell vim-plug we finished declaring plugins, so it can load them
 call plug#end()
@@ -86,7 +86,7 @@ ca w!! w !sudo tee "%"
 
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 " (neomake, ...)
-set shell=/bin/zsh
+set shell=/bin/bash
 
 " ============================================================================
 " Plugins settings and mappings
