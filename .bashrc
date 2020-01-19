@@ -33,6 +33,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # JavaRE config
 export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
 # ---
 
 # Path related config
