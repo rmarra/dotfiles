@@ -620,7 +620,7 @@ awful.rules.rules = {
          class = {
             "Arandr", "Blueman-manager", "Gpick", "Kruler", "MessageWin", -- kalarm.
             "Sxiv", "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
-            "Wpa_gui", "veromix", "xtightvncviewer"
+            "Wpa_gui", "veromix", "xtightvncviewer", "Pcmanfm"
          },
 
          -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -639,7 +639,24 @@ awful.rules.rules = {
    {
       rule_any = {type = {"normal", "dialog"}},
       properties = {titlebars_enabled = true}
-   }
+   },
+	{
+		rule = {class = "Pcmanfm"},
+		properties = {
+			floating = true,
+			widget = 834,
+			height = 625,
+			y = 190,
+			x = 508
+		}
+
+	},
+	{
+		rule = {class = "install4j-burp-StartBurp", name = " "},
+		properties = {
+			floating = true,
+		}
+	}
 
    -- Set Firefox to always map on the tag named "2" on screen 1.
    -- { rule = { class = "Firefox" },
