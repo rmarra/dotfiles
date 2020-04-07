@@ -355,7 +355,6 @@ globalkeys = gears.table.join(
    	end,
 		{description = "go back", group = "client"}
 	),
-	-- Standard program
    awful.key(
 		{modkey},
 		"Return",
@@ -410,6 +409,22 @@ globalkeys = gears.table.join(
 		"p",
 		function() menubar.show() end,
 		{description = "show the menubar", group = "launcher"}
+	),
+	--- User programs
+	awful.key(
+		{ },
+		"Print",
+		function()                                         
+			 awful.spawn.with_shell("maim $HOME/Pictures/Screenshots/" .. os.date("Screenshot_%Y%m%dT%H:%M:%S_Fullscreen.png"))
+		end,
+		{description = "Print selected area", group = "User"}
+	),
+
+   awful.key(
+		{modkey},
+		"Print",
+		function() awful.spawn.with_shell("maim -s | xclip -selection clipboard -t image/png -i")  end,
+		{description = "Print selected area", group = "User"}
 	)
 )
 
