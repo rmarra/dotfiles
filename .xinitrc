@@ -1,3 +1,4 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
-setxkbmap -model abnt2 -layout br -variant abnt2
+setxkbmap -layout us -variant intl
+xset s off -dpms
 exec awesome

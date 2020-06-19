@@ -5,6 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export PROMPT_COMMAND='history -a'
+export EDITOR=nvim
+
 # Load plugin
 # PLUGIN_PATH=$HOME/.config/bash/plugins
 
@@ -37,8 +40,9 @@ export _JAVA_OPTIONS='-Dswing.aatext=TRUE -Dawt.useSystemAAFontSettings=on'
 # ---
 
 # Path related config
-export PATH=$PATH:$HOME/.gem/ruby/2.6.0/bin:$HOME/.local/bin/
-export PATH="$PATH:$HOME/go/bin"
+CUSTOM_PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/.local/bin/:$HOME/go/bin:$HOME/.poetry/bin"
+
+export PATH=$PATH:$CUSTOM_PATH
 # ---
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
