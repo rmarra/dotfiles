@@ -1,7 +1,0 @@
-require('settings')
-require('keymap')
-require('plugins/packer')
-require('plugins/treesitter')
-require('plugins/lspconfig')
-require('plugins/cmp')
-require('plugins/wiki')
