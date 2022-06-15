@@ -1,0 +1,5 @@
+require('settings')
+require('keymap')
+require('plugins/packer')
+require('plugins/lsp')
+require('plugins/nvim-cmp')
