@@ -16,7 +16,7 @@ vim.wo.relativenumber = true
 vim.wo.colorcolumn = '160'
 vim.wo.wrap = false
 
-vim.bo.tabstop = 4
-vim.bo.shiftwidth = 4
+vim.bo.tabstop = 2
+vim.bo.shiftwidth = 2
 vim.bo.expandtab = true
 vim.bo.swapfile = false
