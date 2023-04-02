@@ -1,3 +1,0 @@
-#include ".Xresources.d/rxvt-unicode.conf"
-#include ".Xresources.d/xterm.conf"
-#include ".Xresources.d/xft.conf"
