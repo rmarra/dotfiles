@@ -20,7 +20,11 @@ return {
       'markdown_inline',
       'json',
       'html',
+      'css',
+      'scss',
+      'yaml',
       'javascript',
+      'terraform'
     },
     highlight = { enable = true },
     indent = { enable = true },

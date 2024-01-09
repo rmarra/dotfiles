@@ -10,7 +10,7 @@ return {
 --  },
   {
     'morhetz/gruvbox',
-    laze = false,
+    lazy = false,
     priority = 1000,
     config = function ()
       vim.cmd([[set background=dark]])

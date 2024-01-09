@@ -8,7 +8,7 @@ return {
     },
     ---@class PluginLspOpts
     opts = {
-      servers = { "jsonls", "pyright", "lua_ls" }
+      servers = { "jsonls", "pyright", "lua_ls", "texlab", "kotlin_language_server" }
     },
     config = function(_, opts)
       require("mason").setup()
