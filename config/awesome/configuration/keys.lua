@@ -52,6 +52,14 @@ awful.keyboard.append_global_keybindings({
 	end, { description = "toggle scratchpad", group = "client" }),
 
 	--- Client
+	--- Alt tab
+	awful.key({ mod }, "Tab", function()
+		awful.client.focus.history.previous()
+		if capi.client.focus then
+			capi.client.focus:raise()
+		end
+	end, { description = "go back", group = "client" }),
+
 	--- Focus client by direction
 	awful.key({ mod }, "k", function()
 		awful.client.focus.bydirection("up")

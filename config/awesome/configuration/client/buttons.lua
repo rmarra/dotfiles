@@ -2,7 +2,6 @@ local awful = require("awful")
 local gears = require("gears")
 local user_preferences = require("user_preferences")
 
-
 local modkey = user_preferences.modkey
 
 local M = gears.table.join(
