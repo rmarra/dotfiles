@@ -1,13 +1,13 @@
 return {
   'knubie/vim-kitty-navigator',
-  {
-    'echasnovski/mini.pairs',
-    version = '*' ,
-    event = "VeryLazy",
-    config = function ()
-      require('mini.pairs').setup()
-    end
-  },
+  -- {
+  --   'echasnovski/mini.pairs',
+  --   version = '*' ,
+  --   event = "VeryLazy",
+  --   config = function ()
+  --     require('mini.pairs').setup()
+  --   end
+  -- },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {

@@ -2,12 +2,13 @@ return {
   "github/copilot.vim",
   {
     "lukas-reineke/indent-blankline.nvim",
-    opts = {
-      show_current_context = true,
-      show_current_context_start = true,
-      char = '┊',
-      show_trailing_blankline_indent = false
-    }
+    main = "ibl",
+    -- opts = {
+    --   show_current_context = true,
+    --   show_current_context_start = true,
+    --   char = '┊',
+    --   show_trailing_blankline_indent = false
+    -- }
   },
   {
     "lewis6991/gitsigns.nvim",
