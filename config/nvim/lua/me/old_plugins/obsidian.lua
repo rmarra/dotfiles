@@ -4,8 +4,8 @@ map('n', '<leader>on', '<cmd>ObsidianNew<CR>')
 map('n', '<leader>osf', '<cmd>ObsidianQuickSwitch<CR>')
 map('n', '<leader>osg', '<cmd>ObsidianSearch<CR>')
 map('n', '<leader>oen', '<cmd>ObsidianExtractNote<CR>')
-map('n', '<leader>ob', '<cmd>e /home/rmarra/vault/5-tasks/1-backlog.md<CR>')
-map('n', '<leader>ot', '<cmd>ObsidianOpen /home/rmarra/vault/5-tasks/0-today.md<CR>')
+map('n', '<leader>ob', '<cmd>e $HOME/vaults/marra/5-tasks/1-backlog.md<CR>')
+map('n', '<leader>ot', '<cmd>ObsidianOpen $HOME/vaults/marra/5-tasks/0-today.md<CR>')
 
 return {
   'epwalsh/obsidian.nvim',
@@ -16,8 +16,8 @@ return {
   opts = {
     workspaces = {
       {
-        name = 'vault',
-        path = '/home/rmarra/vault',
+        name = 'marra',
+        path = '$HOME/vaults/marra',
         strict = true,
       },
     },

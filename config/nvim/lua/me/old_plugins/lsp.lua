@@ -9,6 +9,9 @@ return {
     },
   },
   { 'Bilal2453/luvit-meta', lazy = true },
+
+  {'nvim-java/nvim-java'},
+
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -26,6 +29,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
+      require('java').setup()
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
@@ -130,6 +134,7 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
+        jdtls = {},
         --
 
         lua_ls = {
@@ -154,6 +159,7 @@ return {
       --    :Mason
       --
       --  You can press `g?` for help in this menu.
+
       require('mason').setup()
 
       -- You can add other tools here that you want Mason to install
@@ -168,9 +174,6 @@ return {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
             require('lspconfig')[server_name].setup(server)
           end,
