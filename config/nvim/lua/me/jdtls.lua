@@ -36,7 +36,7 @@ end
 M.ensure_debug_config = function()
   local project_spec_data = load_project_spec()
   if project_spec_data == nil then
-    return jdtls_dap.setup_dap_main_class_configs({aff = "meucu"})
+    return jdtls_dap.setup_dap_main_class_configs()
   end
   local spec = yaml.eval(project_spec_data)
   if spec['env'] ~= nil then
