@@ -1,6 +1,5 @@
 local M = {}
 
--- export on_attach & capabilities
 M.on_attach = function(_, bufnr)
     local function map(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local opts = { noremap=true, silent=true }
@@ -19,19 +18,10 @@ M.on_attach = function(_, bufnr)
     map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     map('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-    map("n", "<leader>di", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
-    map("n", "<leader>dt", "<Cmd>lua require'jdtls'.test_class()<CR>", opts)
-    map("n", "<leader>dn", "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", opts)
-    map("v", "<leader>de", "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", opts)
-    map("n", "<leader>de", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
-    map("v", "<leader>dm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
-
     map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
--- disable semanticTokens
-M.on_init = function(client, _)
+local on_init = function(client, _)
   if client.supports_method "textDocument/semanticTokens" then
     client.server_capabilities.semanticTokensProvider = nil
   end
@@ -66,39 +56,11 @@ M.build_config = function()
     };
     handlers = {},
     capabilities = capabilities;
-    on_init = M.on_init;
+    on_init = on_init;
     on_attach = M.on_attach;
     on_exit = M.on_exit;
     settings = {},
   }
 end
-
-
-M.defaults = function()
-  local lua_config = M.build_config()
-
-  lua_config.settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          vim.fn.expand "$VIMRUNTIME/lua",
-          vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-          "${3rd}/luv/library",
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  }
-  require'lspconfig'.lua_ls.setup(lua_config)
-
-  local go_config = M.build_config()
-  require'lspconfig'.gopls.setup(go_config)
-end
-
 
 return M
