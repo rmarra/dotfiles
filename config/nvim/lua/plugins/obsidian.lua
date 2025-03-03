@@ -1,30 +1,20 @@
-local home = os.getenv 'HOME'
-local workspace = home .. '/vaults/marra'
-
 return {
   'epwalsh/obsidian.nvim',
   version = '*',
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+  },
   opts = {
-    workspaces = {
-      {
-        name = 'vault',
-        path = workspace,
-        strict = true,
-      },
-    },
+    workspaces = require('me.obsidian').workspaces,
     completion = {
       nvim_cmp = true,
       min_chars = 2,
-    },
-    daily_notes = {
-      folder = 'dailies',
     },
     notes_subdir = '0-inbox',
     new_notes_location = 'notes_subdir',
     sort_by = 'modified',
     sort_reversed = true,
     search_max_lines = 1000,
-
     note_id_func = function(title)
       local suffix = ''
       if title ~= nil then
@@ -79,14 +69,8 @@ return {
       },
     },
   },
-  config = function(opts)
+  config = function(_, opts)
     require('obsidian').setup(opts)
-    local map = vim.keymap.set
-    map('n', '<leader>on', '<cmd>ObsidianNew<CR>')
-    map('n', '<leader>osf', '<cmd>ObsidianQuickSwitch<CR>')
-    map('n', '<leader>osg', '<cmd>ObsidianSearch<CR>')
-    map('n', '<leader>oen', '<cmd>ObsidianExtractNote<CR>')
-    map('n', '<leader>ob', '<cmd>e /Users/raphaelmarra/vaults/marra/5-tasks/1-backlog.md<CR>')
-    map('n', '<leader>ot', '<cmd>ObsidianOpen /Users/raphaelmarra/vaults/marra/5-tasks/0-today.md<CR>')
+    require('me.obsidian').setup_mappings()
   end,
 }

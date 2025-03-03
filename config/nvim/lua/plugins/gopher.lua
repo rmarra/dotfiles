@@ -8,6 +8,7 @@ return {
   end,
   opts = {},
   config = function()
+    local gopher = require 'gopher'
     gopher.setup {}
     map('n', '<leader>gtj', function()
       gopher.tags.add 'json'
