@@ -17,8 +17,9 @@ M.on_attach = function(_, bufnr)
     map('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
     map('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     map('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+    map('n', '<leader>fM', '<cmd>lua require"telescope.builtin".lsp_document_symbols()<CR>', opts)
     map('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    map("n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    map("v", "<leader>gf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
 local on_init = function(client, _)

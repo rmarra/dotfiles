@@ -6,7 +6,7 @@ local jdtls_path = home .. '/.local/share/eclipse.jdt.ls/org.eclipse.jdt.ls.prod
 local jdtls_jar_path = jdtls_path .. '/plugins/org.eclipse.equinox.launcher_1.6.1000.v20250131-0606.jar'
 local path_to_config = jdtls_path .. '/config_mac_arm/'
 
-local path_to_lombok = path_to_mason .. '/lombok-nightly/lombok.jar'
+local path_to_lombok = path_to_mason .. '/jdtls/lombok.jar'
 
 local path_to_vscode_test_glob = path_to_mason .. '/java-test/extension/server/*.jar'
 local path_to_debug = '/Users/raphaelmarra/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.53.1.jar'
@@ -82,6 +82,12 @@ function M.setup()
         organizeImports = {
           starThreshold = 9999,
           staticStarThreshold = 9999,
+        },
+      },
+      format = {
+        settings = {
+          url = home .. '/.local/share/eclipse.jdt.ls/org.eclipse.jdt.ls.tests/formatter resources/eclipse-java-google-style.xml',
+          profile = 'GoogleStyle',
         },
       },
       codeGeneration = {

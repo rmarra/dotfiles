@@ -1,7 +1,10 @@
 return {
   'nvim-lua/plenary.nvim',
 
-  'github/copilot.vim',
+  {
+    'github/copilot.vim',
+    enabled = false,
+  },
 
   {
     'folke/which-key.nvim',

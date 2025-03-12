@@ -34,8 +34,9 @@ return {
       }
       require('lspconfig').lua_ls.setup(lua_config)
 
-      local go_config = me_lspconfig.build_config()
-      require('lspconfig').gopls.setup(go_config)
+      require'lspconfig'.pyright.setup(me_lspconfig.build_config())
+
+      require('lspconfig').gopls.setup(me_lspconfig.build_config())
     end,
   },
 }
