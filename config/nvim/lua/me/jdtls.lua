@@ -1,7 +1,7 @@
 local jdtls_dap = require 'jdtls.dap'
 local yaml = require 'yaml'
 local posix = require 'posix'
-local project_spec = '.project-env.yaml'
+local project_spec = '.project-config.yaml'
 
 M = {}
 
@@ -28,8 +28,10 @@ local build_jvm_args = function(spec)
 end
 
 local set_env_vars = function(spec)
-  for key, value in ipairs(spec['env']) do
-    posix.setenv(key, value)
+  for _, value in ipairs(spec['env']) do
+    for k, v in string.gmatch(value, "([^=]+)=(.+)") do
+      posix.setenv(k, v)
+    end
   end
 end
 
